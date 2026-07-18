@@ -505,3 +505,37 @@ if (artworkForm) {
         }, 0);
     });
 }
+const faqQuestions = document.querySelectorAll(".faq-question");
+
+if (faqQuestions.length > 0) {
+    faqQuestions.forEach(function (questionButton) {
+        questionButton.addEventListener("click", function () {
+            const answerId =
+                questionButton.getAttribute("aria-controls");
+
+            const answer = document.querySelector(`#${answerId}`);
+            const icon = questionButton.querySelector(".faq-icon");
+
+            const isExpanded =
+                questionButton.getAttribute("aria-expanded") === "true";
+
+            if (isExpanded) {
+                questionButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                answer.hidden = true;
+                icon.textContent = "+";
+            } else {
+                questionButton.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+                answer.hidden = false;
+                icon.textContent = "−";
+            }
+        });
+    });
+}
