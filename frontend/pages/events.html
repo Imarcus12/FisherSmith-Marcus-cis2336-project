@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Events | ArtConnect</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🎨 ArtConnect</h1>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="events.html" class="active">Events</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <section class="events-introduction">
+        <h2>Upcoming Art Events</h2>
+
+        <p>
+            Discover exhibitions, workshops, festivals, and community
+            events happening through ArtConnect.
+        </p>
+    </section>
+
+    <section class="events-section">
+        <h2>Featured Events</h2>
+
+        <div class="event-grid">
+
+            <article
+                class="event-card"
+                data-title="Houston Summer Art Festival"
+                data-date="July 25, 2026"
+                data-location="Discovery Green, Houston, Texas"
+                data-description="Enjoy live painting demonstrations, local artist booths, music, food, and interactive art activities at this outdoor community festival."
+            >
+                <img
+                    src="https://placehold.co/600x400/d98245/ffffff?text=Summer+Art+Festival"
+                    alt="Houston Summer Art Festival"
+                >
+
+                <div class="event-information">
+                    <h3>Houston Summer Art Festival</h3>
+
+                    <p>
+                        <strong>Date:</strong>
+                        July 25, 2026
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        Discovery Green
+                    </p>
+
+                    <p>
+                        A community festival featuring artists,
+                        demonstrations, music, and activities.
+                    </p>
+
+                    <button type="button" class="event-details-button">
+                        View Event Details
+                    </button>
+                </div>
+            </article>
+
+            <article
+                class="event-card"
+                data-title="Beginner Painting Workshop"
+                data-date="August 2, 2026"
+                data-location="ArtConnect Studio, Houston, Texas"
+                data-description="Learn basic painting techniques in a guided workshop designed for beginners. Materials will be provided, and no previous painting experience is required."
+            >
+                <img
+                    src="https://placehold.co/600x400/6c8fb4/ffffff?text=Painting+Workshop"
+                    alt="Beginner Painting Workshop"
+                >
+
+                <div class="event-information">
+                    <h3>Beginner Painting Workshop</h3>
+
+                    <p>
+                        <strong>Date:</strong>
+                        August 2, 2026
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        ArtConnect Studio
+                    </p>
+
+                    <p>
+                        Learn basic painting techniques in a guided,
+                        beginner-friendly workshop.
+                    </p>
+
+                    <button type="button" class="event-details-button">
+                        View Event Details
+                    </button>
+                </div>
+            </article>
+
+            <article
+                class="event-card"
+                data-title="Modern Photography Showcase"
+                data-date="August 20, 2026"
+                data-location="Houston Center for Photography"
+                data-description="Explore a collection of modern photography from emerging artists. The exhibition focuses on city life, identity, nature, and contemporary culture."
+            >
+                <img
+                    src="https://placehold.co/600x400/434b5c/ffffff?text=Photography+Showcase"
+                    alt="Modern Photography Showcase"
+                >
+
+                <div class="event-information">
+                    <h3>Modern Photography Showcase</h3>
+
+                    <p>
+                        <strong>Date:</strong>
+                        August 20, 2026
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        Houston Center for Photography
+                    </p>
+
+                    <p>
+                        View modern photography created by talented
+                        emerging artists.
+                    </p>
+
+                    <button type="button" class="event-details-button">
+                        View Event Details
+                    </button>
+                </div>
+            </article>
+
+            <article
+                class="event-card"
+                data-title="Digital Art and Design Expo"
+                data-date="September 12, 2026"
+                data-location="George R. Brown Convention Center"
+                data-description="Meet digital artists and designers while exploring animation, illustration, graphic design, and interactive media exhibits."
+            >
+                <img
+                    src="https://placehold.co/600x400/765ca8/ffffff?text=Digital+Art+Expo"
+                    alt="Digital Art and Design Expo"
+                >
+
+                <div class="event-information">
+                    <h3>Digital Art and Design Expo</h3>
+
+                    <p>
+                        <strong>Date:</strong>
+                        September 12, 2026
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        George R. Brown Convention Center
+                    </p>
+
+                    <p>
+                        Explore digital illustration, animation,
+                        graphic design, and interactive media.
+                    </p>
+
+                    <button type="button" class="event-details-button">
+                        View Event Details
+                    </button>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+</main>
+
+<div
+    class="modal"
+    id="event-modal"
+    aria-hidden="true"
+    role="dialog"
+    aria-labelledby="event-modal-title"
+>
+    <div class="modal-content">
+        <button
+            type="button"
+            class="modal-close"
+            id="event-modal-close"
+            aria-label="Close event details"
+        >
+            &times;
+        </button>
+
+        <img id="event-modal-image" src="" alt="">
+
+        <h2 id="event-modal-title"></h2>
+
+        <p>
+            <strong>Date:</strong>
+            <span id="event-modal-date"></span>
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+            <span id="event-modal-location"></span>
+        </p>
+
+        <p id="event-modal-description"></p>
+    </div>
+</div>
+
+<footer>
+    <p>
+        &copy; 2026 ArtConnect |
+        University of Houston CIS 2336 Project
+    </p>
+</footer>
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>

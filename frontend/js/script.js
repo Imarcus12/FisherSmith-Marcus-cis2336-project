@@ -147,3 +147,65 @@ if (artworkGrid) {
 
     filterArtwork();
 }
+const eventCards = document.querySelectorAll(".event-card");
+
+if (eventCards.length > 0) {
+    const eventModal = document.querySelector("#event-modal");
+    const eventModalClose = document.querySelector("#event-modal-close");
+
+    const eventModalImage = document.querySelector("#event-modal-image");
+    const eventModalTitle = document.querySelector("#event-modal-title");
+    const eventModalDate = document.querySelector("#event-modal-date");
+    const eventModalLocation = document.querySelector(
+        "#event-modal-location"
+    );
+    const eventModalDescription = document.querySelector(
+        "#event-modal-description"
+    );
+
+    function openEventModal(card) {
+        const image = card.querySelector("img");
+
+        eventModalImage.src = image.src;
+        eventModalImage.alt = image.alt;
+        eventModalTitle.textContent = card.dataset.title;
+        eventModalDate.textContent = card.dataset.date;
+        eventModalLocation.textContent = card.dataset.location;
+        eventModalDescription.textContent = card.dataset.description;
+
+        eventModal.classList.add("open");
+        eventModal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeEventModal() {
+        eventModal.classList.remove("open");
+        eventModal.setAttribute("aria-hidden", "true");
+    }
+
+    eventCards.forEach(function (card) {
+        const detailsButton = card.querySelector(
+            ".event-details-button"
+        );
+
+        detailsButton.addEventListener("click", function () {
+            openEventModal(card);
+        });
+    });
+
+    eventModalClose.addEventListener("click", closeEventModal);
+
+    eventModal.addEventListener("click", function (event) {
+        if (event.target === eventModal) {
+            closeEventModal();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (
+            event.key === "Escape" &&
+            eventModal.classList.contains("open")
+        ) {
+            closeEventModal();
+        }
+    });
+}
