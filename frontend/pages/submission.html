@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Submit Artwork | ArtConnect</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🎨 ArtConnect</h1>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li>
+                <a href="submission.html" class="active">
+                    Submit Artwork
+                </a>
+            </li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <section class="submission-introduction">
+        <h2>Artist Submission Form</h2>
+
+        <p>
+            Complete the form below to submit artwork information
+            for consideration on ArtConnect.
+        </p>
+
+        <p>
+            Fields marked with an asterisk (*) are required.
+        </p>
+    </section>
+
+    <section class="submission-section">
+
+        <form id="artwork-form" novalidate>
+
+            <div class="form-group">
+                <label for="artist-name">
+                    Artist Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="artist-name"
+                    name="artistName"
+                    autocomplete="name"
+                >
+
+                <span
+                    class="error-message"
+                    id="artist-name-error"
+                ></span>
+            </div>
+
+            <div class="form-group">
+                <label for="artist-email">
+                    Email Address *
+                </label>
+
+                <input
+                    type="email"
+                    id="artist-email"
+                    name="artistEmail"
+                    autocomplete="email"
+                >
+
+                <span
+                    class="error-message"
+                    id="artist-email-error"
+                ></span>
+            </div>
+
+            <div class="form-group">
+                <label for="artwork-title">
+                    Artwork Title *
+                </label>
+
+                <input
+                    type="text"
+                    id="artwork-title"
+                    name="artworkTitle"
+                >
+
+                <span
+                    class="error-message"
+                    id="artwork-title-error"
+                ></span>
+            </div>
+
+            <div class="form-group">
+                <label for="artwork-category">
+                    Category *
+                </label>
+
+                <select
+                    id="artwork-category"
+                    name="artworkCategory"
+                >
+                    <option value="">
+                        Select a category
+                    </option>
+
+                    <option value="Painting">
+                        Painting
+                    </option>
+
+                    <option value="Photography">
+                        Photography
+                    </option>
+
+                    <option value="Digital Art">
+                        Digital Art
+                    </option>
+
+                    <option value="Sculpture">
+                        Sculpture
+                    </option>
+
+                    <option value="Mixed Media">
+                        Mixed Media
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+                </select>
+
+                <span
+                    class="error-message"
+                    id="artwork-category-error"
+                ></span>
+            </div>
+
+            <div class="form-group">
+                <label for="artwork-price">
+                    Price *
+                </label>
+
+                <input
+                    type="number"
+                    id="artwork-price"
+                    name="artworkPrice"
+                    min="0"
+                    step="0.01"
+                    placeholder="Enter 0 if not for sale"
+                >
+
+                <small>
+                    Enter 0 if the artwork is not for sale.
+                </small>
+
+                <span
+                    class="error-message"
+                    id="artwork-price-error"
+                ></span>
+            </div>
+
+            <div class="form-group">
+                <label for="artwork-description">
+                    Description *
+                </label>
+
+                <textarea
+                    id="artwork-description"
+                    name="artworkDescription"
+                    rows="6"
+                    maxlength="500"
+                    placeholder="Describe the artwork, materials, inspiration, or meaning."
+                ></textarea>
+
+                <div class="description-information">
+                    <small>
+                        Maximum 500 characters
+                    </small>
+
+                    <small id="character-count">
+                        0 / 500
+                    </small>
+                </div>
+
+                <span
+                    class="error-message"
+                    id="artwork-description-error"
+                ></span>
+            </div>
+
+            <button type="submit" class="submit-button">
+                Submit Artwork
+            </button>
+
+            <button type="reset" class="reset-button">
+                Clear Form
+            </button>
+
+            <div
+                id="form-status"
+                class="form-status"
+                aria-live="polite"
+            ></div>
+
+        </form>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>
+        &copy; 2026 ArtConnect |
+        University of Houston CIS 2336 Project
+    </p>
+</footer>
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>

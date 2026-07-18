@@ -209,3 +209,299 @@ if (eventCards.length > 0) {
         }
     });
 }
+const artworkForm = document.querySelector("#artwork-form");
+
+if (artworkForm) {
+    const artistName = document.querySelector("#artist-name");
+    const artistEmail = document.querySelector("#artist-email");
+    const artworkTitle = document.querySelector("#artwork-title");
+    const artworkCategory = document.querySelector(
+        "#artwork-category"
+    );
+    const artworkPrice = document.querySelector("#artwork-price");
+    const artworkDescription = document.querySelector(
+        "#artwork-description"
+    );
+
+    const characterCount = document.querySelector(
+        "#character-count"
+    );
+    const formStatus = document.querySelector("#form-status");
+
+    function showError(field, message) {
+        const errorElement = document.querySelector(
+            `#${field.id}-error`
+        );
+
+        field.classList.add("invalid");
+        field.classList.remove("valid");
+        errorElement.textContent = message;
+    }
+
+    function showValid(field) {
+        const errorElement = document.querySelector(
+            `#${field.id}-error`
+        );
+
+        field.classList.remove("invalid");
+        field.classList.add("valid");
+        errorElement.textContent = "";
+    }
+
+    function validateRequiredText(field, fieldName) {
+        const value = field.value.trim();
+
+        if (value === "") {
+            showError(field, `${fieldName} is required.`);
+            return false;
+        }
+
+        if (value.length < 2) {
+            showError(
+                field,
+                `${fieldName} must contain at least 2 characters.`
+            );
+            return false;
+        }
+
+        showValid(field);
+        return true;
+    }
+
+    function validateEmail() {
+        const emailValue = artistEmail.value.trim();
+
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailValue === "") {
+            showError(
+                artistEmail,
+                "Email address is required."
+            );
+            return false;
+        }
+
+        if (!emailPattern.test(emailValue)) {
+            showError(
+                artistEmail,
+                "Enter a valid email address."
+            );
+            return false;
+        }
+
+        showValid(artistEmail);
+        return true;
+    }
+
+    function validateCategory() {
+        if (artworkCategory.value === "") {
+            showError(
+                artworkCategory,
+                "Please select an artwork category."
+            );
+            return false;
+        }
+
+        showValid(artworkCategory);
+        return true;
+    }
+
+    function validatePrice() {
+        const priceValue = artworkPrice.value.trim();
+        const numericPrice = Number(priceValue);
+
+        if (priceValue === "") {
+            showError(
+                artworkPrice,
+                "Price is required."
+            );
+            return false;
+        }
+
+        if (Number.isNaN(numericPrice)) {
+            showError(
+                artworkPrice,
+                "Price must be a number."
+            );
+            return false;
+        }
+
+        if (numericPrice < 0) {
+            showError(
+                artworkPrice,
+                "Price cannot be negative."
+            );
+            return false;
+        }
+
+        showValid(artworkPrice);
+        return true;
+    }
+
+    function validateDescription() {
+        const descriptionValue =
+            artworkDescription.value.trim();
+
+        if (descriptionValue === "") {
+            showError(
+                artworkDescription,
+                "Artwork description is required."
+            );
+            return false;
+        }
+
+        if (descriptionValue.length < 20) {
+            showError(
+                artworkDescription,
+                "Description must contain at least 20 characters."
+            );
+            return false;
+        }
+
+        if (descriptionValue.length > 500) {
+            showError(
+                artworkDescription,
+                "Description cannot exceed 500 characters."
+            );
+            return false;
+        }
+
+        showValid(artworkDescription);
+        return true;
+    }
+
+    function validateForm() {
+        const nameIsValid = validateRequiredText(
+            artistName,
+            "Artist name"
+        );
+
+        const emailIsValid = validateEmail();
+
+        const titleIsValid = validateRequiredText(
+            artworkTitle,
+            "Artwork title"
+        );
+
+        const categoryIsValid = validateCategory();
+        const priceIsValid = validatePrice();
+        const descriptionIsValid = validateDescription();
+
+        return (
+            nameIsValid &&
+            emailIsValid &&
+            titleIsValid &&
+            categoryIsValid &&
+            priceIsValid &&
+            descriptionIsValid
+        );
+    }
+
+    artistName.addEventListener("blur", function () {
+        validateRequiredText(artistName, "Artist name");
+    });
+
+    artistEmail.addEventListener("blur", validateEmail);
+
+    artworkTitle.addEventListener("blur", function () {
+        validateRequiredText(
+            artworkTitle,
+            "Artwork title"
+        );
+    });
+
+    artworkCategory.addEventListener(
+        "change",
+        validateCategory
+    );
+
+    artworkPrice.addEventListener("blur", validatePrice);
+
+    artworkDescription.addEventListener(
+        "input",
+        function () {
+            characterCount.textContent =
+                `${artworkDescription.value.length} / 500`;
+        }
+    );
+
+    artworkDescription.addEventListener(
+        "blur",
+        validateDescription
+    );
+
+    artworkForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        formStatus.className = "form-status";
+        formStatus.textContent = "";
+
+        if (validateForm()) {
+            const submittedTitle =
+                artworkTitle.value.trim();
+
+            formStatus.classList.add("success");
+
+            formStatus.textContent =
+                `"${submittedTitle}" was validated successfully. ` +
+                "This form is not connected to the backend yet.";
+
+            artworkForm.reset();
+
+            document
+                .querySelectorAll(
+                    "#artwork-form input, " +
+                    "#artwork-form select, " +
+                    "#artwork-form textarea"
+                )
+                .forEach(function (field) {
+                    field.classList.remove(
+                        "valid",
+                        "invalid"
+                    );
+                });
+
+            characterCount.textContent = "0 / 500";
+        } else {
+            formStatus.classList.add("failure");
+
+            formStatus.textContent =
+                "Please correct the highlighted fields.";
+
+            const firstInvalidField =
+                artworkForm.querySelector(".invalid");
+
+            if (firstInvalidField) {
+                firstInvalidField.focus();
+            }
+        }
+    });
+
+    artworkForm.addEventListener("reset", function () {
+        window.setTimeout(function () {
+            document
+                .querySelectorAll(".error-message")
+                .forEach(function (errorElement) {
+                    errorElement.textContent = "";
+                });
+
+            document
+                .querySelectorAll(
+                    "#artwork-form input, " +
+                    "#artwork-form select, " +
+                    "#artwork-form textarea"
+                )
+                .forEach(function (field) {
+                    field.classList.remove(
+                        "valid",
+                        "invalid"
+                    );
+                });
+
+            formStatus.className = "form-status";
+            formStatus.textContent = "";
+            characterCount.textContent = "0 / 500";
+        }, 0);
+    });
+}
