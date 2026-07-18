@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery | ArtConnect</title>
+
+    <!-- Because this file is inside pages, use ../ to reach css -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🎨 ArtConnect</h1>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="gallery.html" class="active">Gallery</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="gallery-introduction">
+        <h2>Art Gallery</h2>
+
+        <p>
+            Explore artwork from talented artists across a variety of
+            styles and categories.
+        </p>
+    </section>
+
+    <section class="gallery-controls">
+        <h2>Find Artwork</h2>
+
+        <div class="control-container">
+            <div class="control-group">
+                <label for="search-input">Search:</label>
+
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="Search by title or artist"
+                >
+            </div>
+
+            <div class="control-group">
+                <label for="category-filter">Category:</label>
+
+                <select id="category-filter">
+                    <option value="all">All Categories</option>
+                    <option value="Painting">Painting</option>
+                    <option value="Photography">Photography</option>
+                    <option value="Digital Art">Digital Art</option>
+                    <option value="Sculpture">Sculpture</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="sort-select">Sort:</label>
+
+                <select id="sort-select">
+                    <option value="default">Default Order</option>
+                    <option value="title-ascending">Title: A–Z</option>
+                    <option value="price-low-high">Price: Low to High</option>
+                    <option value="price-high-low">Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+
+        <p id="results-message" aria-live="polite"></p>
+    </section>
+
+    <section class="gallery-section">
+        <h2>Featured Artworks</h2>
+
+        <div class="artwork-grid" id="artwork-grid">
+
+            <article
+                class="artwork-card"
+                data-title="Golden Horizon"
+                data-artist="Elena Rivera"
+                data-category="Painting"
+                data-price="450"
+            >
+                <img
+                    src="https://placehold.co/600x400/e5a54b/ffffff?text=Golden+Horizon"
+                    alt="Golden Horizon artwork"
+                >
+
+                <div class="artwork-information">
+                    <h3>Golden Horizon</h3>
+                    <p><strong>Artist:</strong> Elena Rivera</p>
+                    <p><strong>Category:</strong> Painting</p>
+                    <p><strong>Price:</strong> $450</p>
+
+                    <button type="button" class="details-button">
+                        View Details
+                    </button>
+                </div>
+            </article>
+
+            <article
+                class="artwork-card"
+                data-title="City After Dark"
+                data-artist="Jordan Brooks"
+                data-category="Photography"
+                data-price="275"
+            >
+                <img
+                    src="https://placehold.co/600x400/25364a/ffffff?text=City+After+Dark"
+                    alt="City After Dark artwork"
+                >
+
+                <div class="artwork-information">
+                    <h3>City After Dark</h3>
+                    <p><strong>Artist:</strong> Jordan Brooks</p>
+                    <p><strong>Category:</strong> Photography</p>
+                    <p><strong>Price:</strong> $275</p>
+
+                    <button type="button" class="details-button">
+                        View Details
+                    </button>
+                </div>
+            </article>
+
+            <article
+                class="artwork-card"
+                data-title="Digital Dreams"
+                data-artist="Maya Chen"
+                data-category="Digital Art"
+                data-price="325"
+            >
+                <img
+                    src="https://placehold.co/600x400/7058a6/ffffff?text=Digital+Dreams"
+                    alt="Digital Dreams artwork"
+                >
+
+                <div class="artwork-information">
+                    <h3>Digital Dreams</h3>
+                    <p><strong>Artist:</strong> Maya Chen</p>
+                    <p><strong>Category:</strong> Digital Art</p>
+                    <p><strong>Price:</strong> $325</p>
+
+                    <button type="button" class="details-button">
+                        View Details
+                    </button>
+                </div>
+            </article>
+
+            <article
+                class="artwork-card"
+                data-title="Ocean Movement"
+                data-artist="Noah Bennett"
+                data-category="Painting"
+                data-price="600"
+            >
+                <img
+                    src="https://placehold.co/600x400/348ca8/ffffff?text=Ocean+Movement"
+                    alt="Ocean Movement artwork"
+                >
+
+                <div class="artwork-information">
+                    <h3>Ocean Movement</h3>
+                    <p><strong>Artist:</strong> Noah Bennett</p>
+                    <p><strong>Category:</strong> Painting</p>
+                    <p><strong>Price:</strong> $600</p>
+
+                    <button type="button" class="details-button">
+                        View Details
+                    </button>
+                </div>
+            </article>
+
+            <article
+                class="artwork-card"
+                data-title="Quiet Strength"
+                data-artist="Avery Thompson"
+                data-category="Sculpture"
+                data-price="0"
+            >
+                <img
+                    src="https://placehold.co/600x400/8f8f8f/ffffff?text=Quiet+Strength"
+                    alt="Quiet Strength artwork"
+                >
+
+                <div class="artwork-information">
+                    <h3>Quiet Strength</h3>
+                    <p><strong>Artist:</strong> Avery Thompson</p>
+                    <p><strong>Category:</strong> Sculpture</p>
+                    <p><strong>Price:</strong> Not for Sale</p>
+
+                    <button type="button" class="details-button">
+                        View Details
+                    </button>
+                </div>
+            </article>
+
+            <article
+                class="artwork-card"
+                data-title="Morning Stillness"
+                data-artist="Sophia Williams"
+                data-category="Photography"
+                data-price="200"
+            >
+                <img
+                    src="https://placehold.co/600x400/829c72/ffffff?text=Morning+Stillness"
+                    alt="Morning Stillness artwork"
+                >
+
+                <div class="artwork-information">
+                    <h3>Morning Stillness</h3>
+                    <p><strong>Artist:</strong> Sophia Williams</p>
+                    <p><strong>Category:</strong> Photography</p>
+                    <p><strong>Price:</strong> $200</p>
+
+                    <button type="button" class="details-button">
+                        View Details
+                    </button>
+                </div>
+            </article>
+
+        </div>
+    </section>
+</main>
+
+<!-- Artwork details popup -->
+<div class="modal" id="artwork-modal" aria-hidden="true">
+    <div class="modal-content">
+        <button
+            type="button"
+            class="modal-close"
+            id="modal-close"
+            aria-label="Close artwork details"
+        >
+            &times;
+        </button>
+
+        <img id="modal-image" src="" alt="">
+
+        <h2 id="modal-title"></h2>
+
+        <p>
+            <strong>Artist:</strong>
+            <span id="modal-artist"></span>
+        </p>
+
+        <p>
+            <strong>Category:</strong>
+            <span id="modal-category"></span>
+        </p>
+
+        <p>
+            <strong>Price:</strong>
+            <span id="modal-price"></span>
+        </p>
+    </div>
+</div>
+
+<footer>
+    <p>
+        &copy; 2026 ArtConnect |
+        University of Houston CIS 2336 Project
+    </p>
+</footer>
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>
