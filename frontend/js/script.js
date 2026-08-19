@@ -431,36 +431,27 @@ if (artworkForm) {
         validateDescription
     );
 
-    artworkForm.addEventListener("submit", function (event) {
+artworkForm.addEventListener("submit", function (event) {
+
+    formStatus.className = "form-status";
+    formStatus.textContent = "";
+
+    if (!validateForm()) {
         event.preventDefault();
 
-        formStatus.className = "form-status";
-        formStatus.textContent = "";
+        formStatus.classList.add("failure");
 
-        if (validateForm()) {
-            const submittedTitle =
-                artworkTitle.value.trim();
+        formStatus.textContent =
+            "Please correct the highlighted fields.";
 
-            formStatus.classList.add("success");
+        const firstInvalidField =
+            artworkForm.querySelector(".invalid");
 
-            formStatus.textContent =
-                `"${submittedTitle}" was validated successfully. ` +
-                "This form is not connected to the backend yet.";
-
-            artworkForm.reset();
-
-            document
-                .querySelectorAll(
-                    "#artwork-form input, " +
-                    "#artwork-form select, " +
-                    "#artwork-form textarea"
-                )
-                .forEach(function (field) {
-                    field.classList.remove(
-                        "valid",
-                        "invalid"
-                    );
-                });
+        if (firstInvalidField) {
+            firstInvalidField.focus();
+        }
+    }
+});
 
             characterCount.textContent = "0 / 500";
         } else {
