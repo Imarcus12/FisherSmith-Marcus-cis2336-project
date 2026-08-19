@@ -158,3 +158,37 @@ CIS 2336 Semester Project
 - Stockcake
 - Placehold.co
 - ChatGPT (development assistance)
+
+
+## Back-End
+
+The ArtConnect backend is built using Node.js and Express.
+
+### Backend Features
+
+- Runs an Express web server on port 3000
+- Serves the ArtConnect front-end files
+- Processes artwork submission form data
+- Handles GET and POST requests
+- Temporarily stores submitted artwork in a JavaScript array
+- Returns a confirmation message after successful artwork submission
+
+### API Routes
+
+#### GET /api/artworks
+
+Returns all artwork submissions currently stored on the server.
+
+Example:
+
+```json
+[
+    {
+        "artistName": "Marcus Fisher",
+        "artistEmail": "msfisher@cougarnet.uh.edu",
+        "artworkTitle": "Houston at Sunset",
+        "artworkCategory": "Photography",
+        "artworkPrice": "250",
+        "artworkDescription": "A photograph of the Houston skyline."
+    }
+]
